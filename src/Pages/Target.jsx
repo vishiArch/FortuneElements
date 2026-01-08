@@ -7,28 +7,22 @@ export default function TargetCities() {
     const cities = [
         {
             name: "Bilaspur",
-            image:
-                "/img.jpg",
-            projects: 12,
-            residents: "2500+",
+            projects: "3+",
+            image: "/img.jpg",
             description:
                 "Our flagship city with diverse residential and commercial projects.",
         },
         {
             name: "Bilaspur",
-            image:
-                "/imgTwo.jpg",
-            projects: 8,
-            residents: "1800+",
+            projects: "4+",
+            image: "/imgTwo.jpg",
             description:
                 "Premium developments in the capital of Odisha with modern lifestyle.",
         },
         {
             name: "Bilaspur",
-            image:
-                "/imgThree.jpg",
-            projects: 5,
-            residents: "950+",
+            projects: "2+",
+            image: "/imgThree.jpg",
             description:
                 "Emerging hub with contemporary architectural marvels and amenities.",
         },
@@ -72,12 +66,12 @@ export default function TargetCities() {
                             fontWeight: 700,
                         }}
                     >
-                        Our{" "}
+                        Where{" "}
                         <span
                             className="drop-shadow-[0_0_25px_rgba(212,169,71,0.55)]"
                             style={{ color: brandGold }}
                         >
-                            Target Cities
+                            We Operate
                         </span>
                     </h2>
 
@@ -165,23 +159,7 @@ export default function TargetCities() {
                                         </p>
                                     </div>
 
-                                    <div className="text-center relative right-22">
-                                        <div className="flex items-center justify-center gap-2 mb-1">
-                                            <Users
-                                                size={18}
-                                                style={{ color: brandGold }}
-                                            />
-                                            <span className="text-2xl font-bold">
-                                                {city.residents}
-                                            </span>
-                                        </div>
-                                        <p
-                                            className="text-sm"
-                                            style={{ color: "rgba(255,255,255,0.5)" }}
-                                        >
-                                            Residents
-                                        </p>
-                                    </div>
+
                                 </div>
 
                                 {/* CTA */}
