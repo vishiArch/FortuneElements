@@ -28,7 +28,7 @@ export default function InvestFuture() {
     return (
         <section
             id="invest-future"
-            className="pt-24 pb-10 px-4 bg-[#02080D] mb-0" // Adjusted bottom margin
+            className="pt-24 pb-10 px-4 bg-[#02080D] mb-0 border-t-1 border-amber-500" // Adjusted bottom margin
         >
             <div className="max-w-7xl mx-auto">
 

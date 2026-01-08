@@ -38,6 +38,8 @@ export default function About() {
             className="px-4 pt-28 pb-20"
             style={{
                 background: "linear-gradient(180deg, #030C09 0%, #030C09 100%)",
+                borderTop: "1px solid #D4A947",
+                // boxShadow: "inset 0 1px 20px rgba(212,169,71,0.3)",
             }}
         >
             <div className="max-w-7xl mx-auto">

@@ -1,237 +1,241 @@
 import { useState } from "react";
 import { MapPin, ArrowRight } from "lucide-react";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Mousewheel } from "swiper/modules";
+
+import { motion } from "framer-motion";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+
 const projects = [
-    {
-        id: 1,
-        name: "Royal Residency Phase 1",
-        category: "Residential",
-        location: "Saria, Sambalpur",
-        image: "https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=600&h=420&auto=format&fit=crop&q=60&fm=webp",
-        status: "Ready to Move",
-    },
-    {
-        id: 2,
-        name: "Fortune Elements Prestige",
-        category: "Residential",
-        location: "Sourav Vihar, Burla",
-        image: "https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=600&h=420&auto=format&fit=crop&q=60&fm=webp",
-        status: "Ready to Move",
-    },
-    {
-        id: 3,
-        name: "Fortune Elements Residency",
-        category: "Residential",
-        location: "Sambalpur",
-        image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=420&auto=format&fit=crop&q=60&fm=webp",
-        status: "Ready to Move",
-    },
-    {
-        id: 4,
-        name: "Fortune Elements Homes",
-        category: "Residential",
-        location: "Shanti Nagar, Sambalpur",
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=420&auto=format&fit=crop&q=60&fm=webp",
-        status: "Ready to Move",
-    },
-    {
-        id: 5,
-        name: "Fortune Elements Imperial",
-        category: "Commercial",
-        location: "Sambalpur",
-        image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=600&h=420&auto=format&fit=crop&q=60&fm=webp",
-        status: "Upcoming",
-    },
-    {
-        id: 6,
-        name: "Fortune Elements Spaces",
-        category: "Commercial",
-        location: "Various Locations",
-        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=420&auto=format&fit=crop&q=60&fm=webp",
-        status: "Upcoming",
-    },
-    {
-        id: 7,
-        name: "Fortune Elements Prime",
-        category: "Residential",
-        location: "Sahednagar, Bhubaneswar",
-        image: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=420&auto=format&fit=crop&q=60&fm=webp",
-        status: "Launching Soon",
-    },
-    {
-        id: 8,
-        name: "Fortune Elements Luxotica",
-        category: "Residential",
-        location: "Sahednagar, Bhubaneswar",
-        image: "https://images.unsplash.com/photo-1599423300746-b62533397364?w=600&h=420&auto=format&fit=crop&q=60&fm=webp",
-        status: "Launching Soon",
-    },
+  {
+    id: 1,
+    name: "Royal Residency Phase 1",
+    category: "Residential",
+    location: "Bilaspur",
+    mediaType: "video",
+    media: "/one.mp4",
+    status: "Ready to Move",
+  },
+  {
+    id: 2,
+    name: "Fortune Elements Prestige",
+    category: "Residential",
+    location: "Bilaspur",
+    mediaType: "video",
+    media: "/two.mp4",
+    status: "Ready to Move",
+  },
+  {
+    id: 3,
+    name: "Fortune Elements Residency",
+    category: "Residential",
+    location: "Bilaspur",
+    mediaType: "video",
+    media: "/three.mp4",
+    status: "Ready to Move",
+  },
+  {
+    id: 4,
+    name: "Fortune Elements Homes",
+    category: "Residential",
+    location: "Bilaspur",
+    mediaType: "video",
+    media: "/four.mp4",
+    status: "Ready to Move",
+  },
+  {
+    id: 5,
+    name: "Fortune Elements Imperial",
+    category: "Commercial",
+    location: "Bilaspur",
+    mediaType: "video",
+    media: "/five.mp4",
+    status: "Upcoming",
+  },
+  {
+    id: 6,
+    name: "Fortune Elements Spaces",
+    category: "Commercial",
+    location: "Bilaspur",
+    mediaType: "video",
+    media: "/six.mp4",
+    status: "Upcoming",
+  },
+  {
+    id: 7,
+    name: "Fortune Elements Prime",
+    category: "Residential",
+    location: "Bilaspur",
+    mediaType: "video",
+    media: "/seven.mp4",
+    status: "Launching Soon",
+  },
+  {
+    id: 8,
+    name: "Fortune Elements Luxotica",
+    category: "Residential",
+    location: "Bilaspur",
+    mediaType: "video",
+    media: "/eight.mp4",
+    status: "Launching Soon",
+  },
 ];
 
 export default function Projects() {
-    const handleViewAllProjects = () => {
-        window.open("https://wa.me/9297701142?text=I am interested in viewing all projects", "_blank");
-    };
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [showCursor, setShowCursor] = useState(false);
 
-    return (
-        <section
-            id="our-projects"
-            className="py-24 px-4 relative overflow-hidden"
-            style={{
-                background: "linear-gradient(180deg, #01050F 0%, #0B0A09 45%, #19170B 100%)",
-            }}
+  return (
+    <section
+      id="our-projects"
+      className="py-24 px-4 relative overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(180deg, #01050F 0%, #0B0A09 45%, #19170B 100%)",
+      }}
+    >
+      {/* Background glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 50% -10%, rgba(212,169,71,0.12), transparent 70%)",
+        }}
+      />
+
+      {/* Cursor-follow swipe hint */}
+      {showCursor && (
+        <motion.div
+          className="fixed z-50 pointer-events-none"
+          animate={{
+            x: cursor.x - 60,
+            y: cursor.y - 60,
+          }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-            {/* BACKGROUND SHINE */}
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    background:
-                        "radial-gradient(circle at 50% -10%, rgba(212,169,71,0.10), transparent 70%)",
-                }}
-            />
+          <div className="w-[120px] h-[120px] rounded-full flex items-center justify-center bg-white/15 backdrop-blur-md border border-white/30">
+            <span className="text-white text-sm tracking-widest font-semibold">
+              SWIPE
+            </span>
+          </div>
+        </motion.div>
+      )}
 
-            <div className="max-w-7xl mx-auto relative z-10">
-                {/* Heading */}
-                <div className="text-center mb-20">
-                    <h2
-                        className="text-4xl md:text-5xl font-bold mb-4"
-                        style={{
-                            fontFamily: "'Playfair Display', serif",
-                            color: "white",
-                        }}
-                    >
-                        Our{" "}
-                        <span style={{ color: "#D4A947" }}>
-                            Premium Projects
-                        </span>
-                    </h2>
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="mb-14">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Our <span className="text-[#D4A947]">Premium Projects</span>
+          </h2>
 
-                    <p
-                        className="text-lg max-w-2xl mx-auto"
-                        style={{
-                            color: "rgba(255,255,255,0.75)",
-                            fontFamily: "'Montserrat', sans-serif",
-                        }}
-                    >
-                        Explore world-class developments built with precision,
-                        luxury, and modern architecture.
-                    </p>
-                </div>
+          <p className="text-lg max-w-2xl text-white/75">
+            Explore world-class developments built with precision, luxury, and
+            modern architecture.
+          </p>
+        </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                    {projects.map((project) => (
-                        <ProjectCard key={project.id} project={project} />
-                    ))}
-                </div>
+        {/* Swiper */}
+        <div
+          onMouseEnter={() => setShowCursor(true)}
+          onMouseLeave={() => setShowCursor(false)}
+          onMouseMove={(e) =>
+            setCursor({ x: e.clientX, y: e.clientY })
+          }
+        >
+          <Swiper
+            modules={[FreeMode, Mousewheel]}
+            spaceBetween={40}
+            slidesPerView="auto"
+            freeMode
+            mousewheel={{ forceToAxis: true }}
+            grabCursor
+            className="!overflow-visible"
+          >
+            {projects.map((project) => (
+              <SwiperSlide key={project.id} className="!w-auto">
+                <ProjectCard project={project} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-                {/* Button */}
-                <div className="text-center mt-16">
-                    <button
-                        onClick={handleViewAllProjects}
-                        className="px-10 py-4 rounded-lg transition-all duration-300 font-semibold hover:scale-105 shadow-lg"
-                        style={{
-                            background: "#D4A947",
-                            color: "#0C3E31",
-                            fontFamily: "'Montserrat', sans-serif",
-                        }}
-                    >
-                        View All Projects →
-                    </button>
-                </div>
-            </div>
-        </section>
-    );
+        {/* CTA */}
+        <div className="text-center mt-16">
+          <a
+            href="https://wa.me/9297701142?text=I am interested in viewing all projects"
+            target="_blank"
+            className="inline-block px-10 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg bg-[#D4A947] text-[#0C3E31]"
+          >
+            View All Projects →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function ProjectCard({ project }) {
-    const [isHovered, setIsHovered] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
-    return (
-        <div
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="group relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-500 shadow-xl hover:shadow-yellow-500/20"
-            style={{
-                border: "1px solid rgba(255,255,255,0.08)",
-                backdropFilter: "blur(4px)",
-            }}
-        >
-            {/* Image */}
-            <div className="relative overflow-hidden h-[420px] w-[600px] rounded-2xl">
-                <img
-                    src={project.image}
-                    alt={project.name}
-                    loading="lazy"
-                    decoding="async"
-                    className={`w-full h-full object-cover transition-transform duration-500 ${
-                        isHovered ? "scale-110" : "scale-100"
-                    }`}
-                />
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative group w-[600px] overflow-hidden rounded-2xl cursor-pointer transition-all duration-500 shadow-xl hover:shadow-yellow-500/20"
+      style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+    >
+      {/* Video */}
+      <div className="relative h-[420px] overflow-hidden">
+        <video
+          src={project.media}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className={`w-full h-full object-cover transition-transform duration-500 ${
+            hovered ? "scale-110" : "scale-100"
+          }`}
+        />
 
-                <div
-                    className={`absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent transition-opacity duration-300 ${
-                        isHovered ? "opacity-90" : "opacity-70"
-                    }`}
-                ></div>
-            </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+      </div>
 
-            {/* Status */}
-            <div className="absolute top-4 left-4">
-                <span
-                    className="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md"
-                    style={{
-                        fontFamily: "'Montserrat', sans-serif",
-                        background:
-                            project.status === "Ready to Move"
-                                ? "rgba(164,213,58,0.9)"
-                                : "rgba(212,169,71,0.9)",
-                        color: "black",
-                    }}
-                >
-                    {project.status}
-                </span>
-            </div>
+      {/* Status */}
+      <span
+        className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold"
+        style={{
+          background:
+            project.status === "Ready to Move"
+              ? "rgba(164,213,58,0.9)"
+              : "rgba(212,169,71,0.9)",
+          color: "#000",
+        }}
+      >
+        {project.status}
+      </span>
 
-            {/* Content */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
-                <h3
-                    className="text-2xl font-bold mb-1 drop-shadow-lg"
-                    style={{
-                        fontFamily: "'Playfair Display', serif",
-                        color: "white",
-                    }}
-                >
-                    {project.name}
-                </h3>
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-6">
+        <h3 className="text-2xl font-bold text-white mb-1">
+          {project.name}
+        </h3>
 
-                <div
-                    className="flex items-center gap-2 mb-3"
-                    style={{ color: "rgba(255,255,255,0.8)" }}
-                >
-                    <MapPin size={16} />
-                    <span
-                        className="text-sm"
-                        style={{ fontFamily: "'Montserrat', sans-serif" }}
-                    >
-                        {project.location}
-                    </span>
-                </div>
-
-                <a
-                    href={`https://wa.me/9297701142?text=I am interested in ${project.name}`}
-                    target="_blank"
-                    className="inline-flex items-center gap-2 transition-colors"
-                    style={{
-                        color: "#D4A947",
-                        fontFamily: "'Montserrat', sans-serif",
-                        fontWeight: 600,
-                    }}
-                >
-                    View Details
-                    <ArrowRight size={18} />
-                </a>
-            </div>
+        <div className="flex items-center gap-2 text-white/80 mb-3">
+          <MapPin size={16} />
+          <span className="text-sm">{project.location}</span>
         </div>
-    );
+
+        <a
+          href={`https://wa.me/9297701142?text=I am interested in ${project.name}`}
+          target="_blank"
+          className="inline-flex items-center gap-2 font-semibold text-[#D4A947]"
+        >
+          View Details <ArrowRight size={18} />
+        </a>
+      </div>
+    </div>
+  );
 }

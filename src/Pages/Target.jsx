@@ -6,27 +6,27 @@ export default function TargetCities() {
 
     const cities = [
         {
-            name: "Sambalpur",
+            name: "Bilaspur",
             image:
-                "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&auto=format&fit=crop&q=80",
+                "/img.jpg",
             projects: 12,
             residents: "2500+",
             description:
                 "Our flagship city with diverse residential and commercial projects.",
         },
         {
-            name: "Bhubaneswar",
+            name: "Bilaspur",
             image:
-                "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&auto=format&fit=crop&q=80",
+                "/imgTwo.jpg",
             projects: 8,
             residents: "1800+",
             description:
                 "Premium developments in the capital of Odisha with modern lifestyle.",
         },
         {
-            name: "Burla",
+            name: "Bilaspur",
             image:
-                "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&auto=format&fit=crop&q=80",
+                "/imgThree.jpg",
             projects: 5,
             residents: "950+",
             description:
@@ -147,13 +147,13 @@ export default function TargetCities() {
                                         borderBottom: "1px solid rgba(255,255,255,0.12)",
                                     }}
                                 >
-                                    <div className="text-center">
+                                    <div className="text-center relative right-14">
                                         <div className="flex items-center justify-center gap-2 mb-1">
                                             <Building2
                                                 size={18}
                                                 style={{ color: brandGold }}
                                             />
-                                            <span className="text-2xl font-bold">
+                                            <span className="text-2xl font-bold ">
                                                 {city.projects}
                                             </span>
                                         </div>
@@ -165,7 +165,7 @@ export default function TargetCities() {
                                         </p>
                                     </div>
 
-                                    <div className="text-center">
+                                    <div className="text-center relative right-22">
                                         <div className="flex items-center justify-center gap-2 mb-1">
                                             <Users
                                                 size={18}
